@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+<title>Similarity Metrics</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print" />
+<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" /> 
+<!--[if IE]>
+  <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+</head>
+<body>
+<div class="container">
+  <h1>Data Mining Portfolio - Similarity</h1>
+<b>Similarity: </b> Similarity is used to tell how closely related 2 objects are. This is EXTREMELY important for use in the different clustering algorithms which need to compare two objects together and see how similar they are. Machines need this is a format that is computable and in a ionteger or floating point format. 
+
+<br><br>
+<b>Note:</b> All examples are taken from Collective Intelligence by Toby Segaran ISBN-10: 0-596-52932-5 available <a href="http://www.amazon.com/Programming-Collective-Intelligence-Building-Applications/dp/0596529325/ref=sr_1_1?ie=UTF8&qid=1290049887&sr=8-1"> here</a>.  
+<br><br>
+
+
+
+  <h2>Euclidean distance</h2>
+  <p class="introduction">Euclidian distance is the straight line distance between 2 points.
+  <br> It is part of a movie rating system and this is determining the similarity between 2 people based upon their movies.</p>
+  <pre class="code">
+#
+# the python implementation here
+# This will calculate the euclidian distance between person1 & person2 
+# based on the movies they have in common
+#
+def sim_distance(prefs,person1,person2):
+	#get the list of shared items
+	shared_items={}
+	for item in prefs[person1]:
+		if item in prefs[person2]:
+			shared_items[item]=1
+
+	#if they have no ratings in common then return 0
+	if len(shared_items)==0: return 0
+
+	#Add up the squares of all the differences
+	#if they both rate a movie, then take person1 - person 2 and square it
+	#then sum it all up
+	sum_of_squares=sum([pow(prefs[person1][item]-prefs[person2][item],2)
+			for item in prefs[person1] if item in prefs[person2]])
+	return 1/(1+sqrt(sum_of_squares))
+  </pre>
+
+<h2>Pearson coefficient</h2>
+  <p class="introduction">This is a similarity metric that measures how similar people are by finding a linear relationship between 2 data objects.</p>
+  <pre class="code">
+#
+# the python implementation here
+# This is the same as the above euclidian distance except using pearson correlation instead
+#
+def sim_pearson(prefs,person1,person2):
+	#get the list of shared items
+	shared_items={}
+	for item in prefs[person1]:
+		if item in prefs[person2]:
+			shared_items[item]=1
+	#n = number of elements in common
+	n=len(shared_items)
+	
+	#if they have no items in common return 0
+	if n == 0: return 0
+
+	#add up all the preferences
+	sum1=sum([prefs[person1][item] for item in shared_items])
+	sum2=sum([prefs[person2][item] for item in shared_items])
+
+	#sum up the squares
+	sum1_square=sum([pow(prefs[person1][item],2) for item in shared_items])
+	sum2_square=sum([pow(prefs[person2][item],2) for item in shared_items])
+
+	#sum up the products
+	sum_product=sum([prefs[person1][item]*prefs[person2][item] for item in shared_items])
+
+	#Calculate the Pearson score
+	num=sum_product-(sum1*sum2/n)
+	denominator=sqrt((sum1_square-pow(sum1,2)/n)*(sum2_square-pow(sum2,2)/n))
+	if denominator==0: return 0
+
+	r=num/denominator
+	return r
+  </pre>
+
+
+<h2>Jaccard/Tanimoto</h2>
+  <p class="introduction">This is used to tell the similarity between 2 objects when the dataset is sparse such as for market-basket goods.</p>
+  <pre class="code">
+#
+# the python implementation here
+#
+# returns the tanimoto coefficient between the two vectors/lists
+#
+def tanimoto(vector1,vector2):
+  OnlyIn_Vector1,OnlyIn_Vector2,shared=0,0,0
+  
+  for i in range(len(vector1)):
+    if vector1[i]!=0: OnlyIn_Vector1+=1 # in v1
+    if vector2[i]!=0: OnlyIn_Vector2+=1 # in v2
+    if vector1[i]!=0 and vector2[i]!=0: shared+=1 # in both
+  
+  return 1.0-(float(shared)/(OnlyIn_Vector1+OnlyIn_Vector2-shared))
+
+  </pre>
+
+<h2>Cosine</h2>
+  <p class="introduction">This measueres the similarity between 2 vectors in n-dimensions. It is frequently used in document/ word matching.  One of the best ways to do this is with the numpy library which can be found <a href="http://numpy.scipy.org/">here.</a><img class="tex" alt=" \text{similarity} = \cos(\theta) = {A \cdot B \over \|A\| \|B\|}." src="http://upload.wikimedia.org/math/d/e/5/de57dd52a6001ca7a6d76611898eb9be.png"> (Wikipedia)</p><br><br>
+  <pre class="code">
+#
+# the python implementation here
+# To do this efficiently use the python 
+#
+
+#import numpy operations dot (dot product) and norm (normalize)
+from numpy import dot
+from numpy.linalg import norm
+
+def cosine(vector1, vector2):
+	numerator = float(dot(vector1,vector2))
+	denominator = float(norm(vector1) * norm(vector2))
+	return numerator/denominator
+
+  </pre>
+
+</div>
+</body>
+</html>

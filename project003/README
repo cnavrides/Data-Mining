@@ -1,0 +1,29 @@
+This project will cluster data together:
+
+* downloadzebodata.py: This is just from the source. It is useless since the website that had the data is no longer around.
+
+
+* clusters.py: This will go through and cluster the points then it will draw a picture of what the graph looks like... WITH LABELS! So cool
+
+~~~~CLASSES~~~~
+	biclusted: This class deals with clusters. It does k means and will draw out a graph of the different clusters
+	
+~~~FUNCTIONS~~~
+	- readfile(filename): this accepts a file name, opens the file and return an array of rownames, columnnames and the data
+	- pearson (list1, list2): This will take 2 lists of values and return the pearson correlation
+	- initializeClusters(rows, distance): This will initialize rows into their own cluster. rows is an array where each element is a row from the file. distance is optional and defaulted to pearson.
+	-printclust(clust, labels, n): This will prnt a cluster and show all of it's branches and endpoints. labels are set to none by default but can be added. n defaults to 0 for the 0th cluster item
+	-getheight(clust) - Takes in a hierarchical cluster and returns the height of it
+	-getdepth(clust) - Similar to getheight it takes in a hierarchical cluster and will return its depth
+	-drawdendrogram(clust,labels,jpeg): this will create an image that is fixed width of 1200 pixels and 20 pixels tall for each unit of height. It takes in the cluster, labels(which can be blank) and an optional image name(defaults to clusters.jpg)
+	- drawnode(draw,clust,x,y,scaling,labels):this will take in a cluster and a draw object and will then draw the connected lines between the nodes and make a tree
+	-rotatematrix(data): will take in a matrix and flip it so all the x points become y and y points become x
+	-kcluster(rows, distance, k): Will find take the rows and break them into k clusters using similarity metric distance. The default number of clusters is 4. Default similarity metric is pearson. will return a list of clusters.
+	-tanimoto(vector1,vector2): This will compute and return the tanimoto coefficient between the two vectors.
+	-scaledown(data,distance, rate): This function takes the data and shifts the points around based upon where the other points are until it can't anymore. the distance is the similarity metric, defaulted to pearson, the default for the rate is 0.01
+	-draw2d(data,labels,jpeg): will take the data and draw it. It saves the image as jped. jpeg is optional and defaults to mds2d.jpg
+
+
+* generatefeedvector.py: This will go through the file 'feedlist.txt' and parse all of the feeds. It will then output what is contained in the feeds to a file 'blogdata1.txt'
+	- getwordcounts(url): Go through the url and get the title and word count of the feeds
+	- getwords(html): Go through and return a list of all of the words found

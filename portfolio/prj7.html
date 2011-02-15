@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+<title>Identifying the Genes associated with Leukemia</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print" />
+<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" /> 
+<!--[if IE]>
+  <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+</head>
+<body>
+<div class="container">
+	<h1>How Genes Cause Types of Leukemia</h1>
+	The purpose of this data mining project was to see if there was a link between certain values of genes and different types of Leukemia. From the dataset provided a link between genes was found.<br>
+
+
+	<h2>About the Dataset</h2>
+	The dataset consists of 72 entries with each entry representing a patient. It comes from a set of 7,000 entries and has been pruned for this specific task. The information given includes Type of Leukemia (only 2 types given ALL or AML), year sample was taken, gender, Treatment response, Source, Genes and a few others. The source was <a href="http://www.kdnuggets.com/data_mining_course/assignments/assignment-5.html">http://www.kdnuggets.com/data_mining_course/assignments/assignment-5.html</a><br><br>
+
+
+	<br><h2>The knime layout</h2>
+	The knime Layout is shown below. There are two CSV files where the first one on the left is just the dataset as given and the one on the right was modified so that it only included the type and genes.  <br>
+	<img src="prj7Layout.png"><br>
+
+
+	<br><h2>Correlation</h2>
+	The first step I did to help me visualize the data was to make correlation Matrices. I was curious if there were any obvious relations between the different data such as males getting cured more than females, or more males with a certain type, etc. The matrix that was formed was as follows:<br>
+
+	<img src="prj7Correlation.png"><br>
+
+	After looking at it I thought there was a strong correlation between the treatment response, and Class (type of Leukemia) as well as the treatment response and the source (Hospital). But then I found that the source and class were related so I came to the conclusion that there could be a correlation between one of the two but you couldn't verify it because the one hospital was treeting mostly one type of Leukemia. <br>
+	Then I decided to look at how the genes were correlated. It produced a pretty cool visualization as shown below:<br>
+	<img src="prj7CorrelationGenes.png">
+
+
+	<br><h2>The Decision Trees</h2>
+	After looking at the data it was clear that a decision tree would be the best bet for this. Because the goal was to determine if a specific genes would cause a type of Leukemia the other classifiers such as clustering wouldn't work as well. The initial decision tree is below:<br>
+	<img src="prj7DecisionTree.png"><br>
+	As you can see it was not too helpful. I was unable to parse out the extraneous info from the CSV and only have the decision tree use part of the input. In the end I just modified the file so that all it had was the type of Leukemia and the gene numbers. This proved much more useful as you can tell from the decision tree that was generated from that:<br>
+	<img src="prj7DecisionTreeFinal.png"><br>
+
+
+	<br><h2>Interesting Results</h2>
+	Just for fun I was playing around with KNIME and decided to do a K-Means clustering on the second input. Interestingly it found 3 clusters that appear to be somewhat similar to the decision tree but not exactly.<br>
+	<img src="prj7Clusters.png"><br>
+
+
+	<br><h2>Future Work</h2>
+	The future work would be related to going through a larger set of data and genes to try and find more correlations between the two. Exploring more of what the K-Means found to see if there were other similarities in the type/treatment of the Leukemia for people found in those clusters. 
+</div>
+</body>
+</html>
+

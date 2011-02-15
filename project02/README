@@ -1,0 +1,24 @@
+This project will make movie recommendations based upon collected data and user preferences.
+
+Recommendations.py:
+	*sim_distance(prefs,person1,person2)- Will calculate the euclidian distance between all movies ranked by both person and person 2. Returns how similar they are
+
+	*sim_pearson(prefs,person1,person2)- Close to the sim_distance function. Will return the pearson similarity metric for person 1 and 2 based on movies they have both seen
+
+	*topMatches(prefs, person, n=5, similarity=sim_pearson)= will return the top matches for that person
+
+	*getRecommendations(prefs,person,similarity=sim_pearson)- will return sorted recommendations for that person. Uses pearson unless changed to euclidian
+
+	*transformPrefs(prefs)-invert preferences so that you can see who and what ranking everyone gave a certain movie
+
+	*calculateSimilarItems(prefs,n=10)- calculates similarity for a set of preferences
+
+	*getRecommendedItems(prefs,itemMatch,user)- This will return a sorted list (highest chance of person liking it) first on down for a given user
+
+	*loadMovieLens(path='/data/movielens')- This will load the lens dataset from the university of michigan
+
+
+deliciousrec.py:
+	* initializeUserDict(tag, count=5)-this will get a dictionary of the last 30 people to post to the website
+
+	*fillItems(user_dict)- This will fill the dictionary that is passed in

@@ -1,0 +1,2 @@
+C:\Users\Chris\Desktop\SCHOOL\csci568\csci568-cnavrides\Final\final.csv
+/home/cnavride/Desktop/Data Mining/src/csci568-cnavrides/Final/final.csv

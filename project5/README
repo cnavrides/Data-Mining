@@ -1,0 +1,70 @@
+Author: Chris Navrides
+
+feedfilter.py: This will go through different feeds and classify their entries into a database
+	* read(feed, classifier): This will take in the URL of the website or RSS as feed. It takes a list of classifiers then parses the feed and puts it into the classifier it deems most probable. It then tells the user what it put it into and asks if that was right or if it should have been put into a different catagory.
+
+	* entryfeatures(entry): This function takes in a feed and will extract the title and summary. It takes the words in the title and marks them as title words and adds them as features. The words in the summarry are also added as features. It then returns the features.
+	 
+	
+docclass.py: 
+
+	* getwords(doc): This functions takes in a string of words (doc) and will split them. It will then put them into a set. It then returns that set of unique words 
+	
+	* sampletrain(c1): This function takes in a classifier and puts in just a little bit of data to help it know they general good vs bad parts.
+
+	CLASS- classifier: The classifier class is used to help store what the classifier has "learned" so far. This will allow you to create a classifier for each user/ group.
+		* setdb(self, dbfile): This will connect to the database supplied (dbfile) and create a table if it doesn't already exsist
+
+		* incf(self, f, cat): increments the count of every feature f for the classification
+
+		* fcount(self, f, cat): returns the number of times that feature (f) is referenced in category (c). ex: 
+			>>> cl=docclass.classifier(docclass.getwords)
+			>>> cl.train('the quick brown fox jumps over the lazy dog','good')
+			>>> cl.train('make quick money in the online casino','bad')
+			>>> cl.fcount('quick','good')
+			1.0
+			>>> cl.fcount('quick','bad')
+			1.0
+		
+
+		* incc(self, cat): This will increment the count of the specified category(cat) 
+	
+		* catcount(self, cat): returns the total number of items incategory (cat)
+
+		* categories(self): Will return the list of categories
+		
+		* totalcount(self): Will return the total number of documents in the current object
+
+		* train(self, item, cat): Takes an item and a classification then for every word in that classification it increments the count of that word.
+
+		* fprob(self, f, cat): Will return the % proportion of the feature (f) in category (cat)
+	
+		* weightedprob(self, f, cat, prf, weight, ap): This will return the weighted probability for feature (f) in category (cat) where prf is the function that calculates current probability. weight default is set to 1.0 and ap default is 0.5. 
+
+
+	CLASS- naivebayes(classifier): This class will enable you to use the naive bayesian classifier. 
+ 
+		* docprob(self, item, cat): Calculates the probability of a whole document (item) being in a given classification 
+
+		* prob(self, cat, t): Will return the probability of a category (cat) being in a document (item)
+
+		* setthreshold(self, cat): Will set the threshold for the given category (cat) 
+
+		* getthreshold(self, cat): Will get the threshold for the given category (cat)
+
+		* classify(self, item, default): This function will calculate the probability of every category of the document (item), and if the largest category exceeds the next largest by more than its threshold it will return that category otherwise it will return the default values. default is set to None if not passed in
+
+		
+	CLASS fisherclassifier(classifier): This will try and help the chance that you get a bunch of documents for one type of classifier. So if you get a bunch of documents that are in the bad category classifier and a certain word is just as likely in either good or bad it will show that the word is more probable to be bad even though it is only because it recieved mostly bad documents. This function will help stop the above example
+
+		* cprob(self, f, cat): This function will return the probability that a feature (f) is in the category (cat) 
+
+		* fisherprob(self, item, cat): This method will return the fisher probability which will take all of the probabilities, multiply them together and take the natural log then multiplying by -2. It will do this for the document (item) in the category (cat)
+
+		* invchi2(self, chi, dif): This is the inverse chi squared function. 
+		
+		* setminimum(self, cat, min): This function will set the minimum to min for category (cat)
+
+		* getminimum(self, cat):  This function will return the minimum for the specified category
+
+		* classify(self, item, default): This function will classify the document (item) with whichever category exceeds the minimum the most. If none do it will return default. default is automatically set to None if nothing is passed in.

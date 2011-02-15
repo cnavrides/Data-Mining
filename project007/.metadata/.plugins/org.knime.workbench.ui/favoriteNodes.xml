@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<favoritenodes>
+<personals/>
+<frequents>
+<favorite frequency="3" nodeid="org.knime.base.node.io.csvreader.CSVReaderNodeFactory"/>
+<favorite frequency="3" nodeid="org.knime.base.node.mine.svm.learner.SVMLearnerNodeFactory"/>
+<favorite frequency="3" nodeid="org.knime.base.node.mine.decisiontree2.learner.DecisionTreeLearnerNodeFactory"/>
+<favorite frequency="2" nodeid="org.knime.base.node.preproc.correlation.pmcc.PMCCNodeFactory"/>
+<favorite frequency="2" nodeid="org.knime.base.node.mine.cluster.hierarchical.HierarchicalClusterNodeFactory"/>
+<favorite frequency="1" nodeid="org.knime.base.node.mine.decisiontreenew.predictor.DecTreePredictorNodeFactory"/>
+<favorite frequency="1" nodeid="org.knime.base.node.mine.cluster.assign.ClusterAssignerNodeFactory"/>
+<favorite frequency="1" nodeid="org.knime.base.node.viz.statistics.Statistics2NodeFactory"/>
+<favorite frequency="1" nodeid="org.knime.base.node.preproc.correlation.pmcc.PMCCFilterNodeFactory"/>
+<favorite frequency="1" nodeid="org.knime.base.node.mine.svm.predictor.SVMPredictorNodeFactory"/>
+<favorite frequency="1" nodeid="org.knime.base.node.mine.cluster.kmeans.ClusterNodeFactory"/>
+</frequents>
+<lastused>
+<favorite nodeid="org.knime.base.node.mine.decisiontreenew.predictor.DecTreePredictorNodeFactory"/>
+<favorite nodeid="org.knime.base.node.mine.cluster.assign.ClusterAssignerNodeFactory"/>
+<favorite nodeid="org.knime.base.node.viz.statistics.Statistics2NodeFactory"/>
+<favorite nodeid="org.knime.base.node.preproc.correlation.pmcc.PMCCFilterNodeFactory"/>
+<favorite nodeid="org.knime.base.node.mine.svm.predictor.SVMPredictorNodeFactory"/>
+<favorite nodeid="org.knime.base.node.io.csvreader.CSVReaderNodeFactory"/>
+<favorite nodeid="org.knime.base.node.mine.svm.learner.SVMLearnerNodeFactory"/>
+<favorite nodeid="org.knime.base.node.mine.decisiontree2.learner.DecisionTreeLearnerNodeFactory"/>
+<favorite nodeid="org.knime.base.node.mine.cluster.hierarchical.HierarchicalClusterNodeFactory"/>
+<favorite nodeid="org.knime.base.node.mine.cluster.kmeans.ClusterNodeFactory"/>
+</lastused>
+</favoritenodes>

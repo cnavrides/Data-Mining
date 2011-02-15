@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+<title>Clustering</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print" />
+<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" /> 
+<!--[if IE]>
+  <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+</head>
+<body>
+<div class="container">
+  <h1>Clustering</h1>
+  <h2>What is clustering</h2><br>
+  Clustering is the process of grouping similar data together based upon common attributes. Such as if the vast majority of people whose favorite color is pink or purple are female you can cluster anyone whose favorite color is pink or purple as female. 
+
+  To a machine groups of data objects can be represented by using a variety of  <a href="similarity.html">similarity metrics.</a> The machine then tries to determine how similar objects are based upon how close they are to eachother.
+  <h2>K-Means</h2>
+  K-Means clustering is clustering sets of points into K-Clusters. It does this by first picking K randomly generated centroids (centers of clusters). It then will go through all of the points and assign that point to whichever centroid it is closest to. After this is done it will relocate the centroid to the center of all of the points that are assigned to that centroid. It will then repeat the process of re-assigning all the points to centroids and centroids moving to the new center until either the centroids stop moving or are only moving a very small amount.
+  <pre class="code">
+  # Note: This is the example from the book Collective Intelligence
+  # Use k-means clustering to make clusters.
+  # the default number of clusters is 4.
+def kcluster(rows,distance=pearson,k=4):
+  # Determine the minimum and maximum values for each point
+  ranges=[(min([row[i] for row in rows]),max([row[i] for row in rows])) 
+  for i in range(len(rows[0]))]
+
+  # Create k randomly placed centroids
+  clusters=[[random.random()*(ranges[i][1]-ranges[i][0])+ranges[i][0] 
+  for i in range(len(rows[0]))] for j in range(k)]
+  
+  lastmatches=None
+  for t in range(100):
+    print 'Iteration %d' % t
+    bestmatches=[[] for i in range(k)]
+    
+    # Find which centroid is the closest for each row
+    for j in range(len(rows)):
+      row=rows[j]
+      bestmatch=0
+      for i in range(k):
+        d=distance(clusters[i],row)
+        if d<distance(clusters[bestmatch],row): bestmatch=i
+      bestmatches[bestmatch].append(j)
+
+    # If the results are the same as last time, this is complete
+    if bestmatches==lastmatches: break
+    lastmatches=bestmatches
+    
+    # Move the centroids to the average of their members
+    for i in range(k):
+      avgs=[0.0]*len(rows[0])
+      if len(bestmatches[i])>0:
+        for rowid in bestmatches[i]:
+          for m in range(len(rows[rowid])):
+            avgs[m]+=rows[rowid][m]
+        for j in range(len(avgs)):
+          avgs[j]/=len(bestmatches[i])
+        clusters[i]=avgs
+      
+  return bestmatches
+
+  </pre>
+  <h2>Hierarchical</h2>
+  Hierarchical clustering starts with assuming every point is a cluster of size one. It then goes through and clusters clusters together until there are the desired number of clusters.
+
+  <pre class="code">
+  # Note: This code is from the book Collective Intelligence.
+def hcluster(rows,distance=pearson):
+  distances={}
+  currentclustid=-1
+
+  # Clusters are initially just the rows
+  clust=[bicluster(rows[i],id=i) for i in range(len(rows))]
+
+  while len(clust)>1:
+    lowestpair=(0,1)
+    closest=distance(clust[0].vec,clust[1].vec)
+
+    # loop through every pair looking for the smallest distance
+    for i in range(len(clust)):
+      for j in range(i+1,len(clust)):
+        # distances is the cache of distance calculations
+        if (clust[i].id,clust[j].id) not in distances: 
+          distances[(clust[i].id,clust[j].id)]=distance(clust[i].vec,clust[j].vec)
+
+        d=distances[(clust[i].id,clust[j].id)]
+
+        if d < closest:
+          closest=d
+          lowestpair=(i,j)
+
+    # calculate the average of the two clusters
+    mergevec=[
+    (clust[lowestpair[0]].vec[i]+clust[lowestpair[1]].vec[i])/2.0 
+    for i in range(len(clust[0].vec))]
+
+    # create the new cluster
+    newcluster=bicluster(mergevec,left=clust[lowestpair[0]],
+                         right=clust[lowestpair[1]],
+                         distance=closest,id=currentclustid)
+
+    # cluster ids that weren't in the original set are negative
+    currentclustid-=1
+    del clust[lowestpair[1]]
+    del clust[lowestpair[0]]
+    clust.append(newcluster)
+
+  return clust[0]
+
+ </pre> 
+
+</div>
+</body>
+</html>
+

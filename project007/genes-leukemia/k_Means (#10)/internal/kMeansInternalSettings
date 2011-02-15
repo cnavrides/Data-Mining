@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.knime.org/2008/09/XMLConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knime.org/2008/09/XMLConfig http://www.knime.org/XMLConfig_2008_09.xsd" key="kMeans">
+<entry key="dimensions" type="xint" value="41"/>
+<entry key="ignoredColumns" type="xint" value="1"/>
+<config key="clusterCoverage">
+<entry key="array-size" type="xint" value="3"/>
+<entry key="0" type="xint" value="16"/>
+<entry key="1" type="xint" value="23"/>
+<entry key="2" type="xint" value="33"/>
+</config>
+<config key="kMeansCluster0">
+<entry key="array-size" type="xint" value="40"/>
+<entry key="0" type="xdouble" value="86.6875"/>
+<entry key="1" type="xdouble" value="612.4375"/>
+<entry key="2" type="xdouble" value="2175.8125"/>
+<entry key="3" type="xdouble" value="994.0"/>
+<entry key="4" type="xdouble" value="192.6875"/>
+<entry key="5" type="xdouble" value="1296.1875"/>
+<entry key="6" type="xdouble" value="240.875"/>
+<entry key="7" type="xdouble" value="754.8125"/>
+<entry key="8" type="xdouble" value="1478.875"/>
+<entry key="9" type="xdouble" value="118.75"/>
+<entry key="10" type="xdouble" value="1298.6875"/>
+<entry key="11" type="xdouble" value="482.625"/>
+<entry key="12" type="xdouble" value="150.9375"/>
+<entry key="13" type="xdouble" value="2762.5625"/>
+<entry key="14" type="xdouble" value="509.1875"/>
+<entry key="15" type="xdouble" value="919.0625"/>
+<entry key="16" type="xdouble" value="136.3125"/>
+<entry key="17" type="xdouble" value="863.75"/>
+<entry key="18" type="xdouble" value="261.8125"/>
+<entry key="19" type="xdouble" value="434.625"/>
+<entry key="20" type="xdouble" value="244.0"/>
+<entry key="21" type="xdouble" value="181.375"/>
+<entry key="22" type="xdouble" value="444.6875"/>
+<entry key="23" type="xdouble" value="1872.0"/>
+<entry key="24" type="xdouble" value="280.25"/>
+<entry key="25" type="xdouble" value="1367.5"/>
+<entry key="26" type="xdouble" value="592.3125"/>
+<entry key="27" type="xdouble" value="526.3125"/>
+<entry key="28" type="xdouble" value="473.125"/>
+<entry key="29" type="xdouble" value="1178.3125"/>
+<entry key="30" type="xdouble" value="170.25"/>
+<entry key="31" type="xdouble" value="1518.0"/>
+<entry key="32" type="xdouble" value="1917.75"/>
+<entry key="33" type="xdouble" value="722.5"/>
+<entry key="34" type="xdouble" value="230.375"/>
+<entry key="35" type="xdouble" value="620.0625"/>
+<entry key="36" type="xdouble" value="280.9375"/>
+<entry key="37" type="xdouble" value="2046.375"/>
+<entry key="38" type="xdouble" value="266.6875"/>
+<entry key="39" type="xdouble" value="1590.5"/>
+</config>
+<config key="kMeansCluster1">
+<entry key="array-size" type="xint" value="40"/>
+<entry key="0" type="xdouble" value="221.52173913043478"/>
+<entry key="1" type="xdouble" value="225.30434782608697"/>
+<entry key="2" type="xdouble" value="591.4347826086956"/>
+<entry key="3" type="xdouble" value="186.95652173913044"/>
+<entry key="4" type="xdouble" value="38.56521739130435"/>
+<entry key="5" type="xdouble" value="262.04347826086956"/>
+<entry key="6" type="xdouble" value="400.04347826086956"/>
+<entry key="7" type="xdouble" value="1630.1739130434783"/>
+<entry key="8" type="xdouble" value="3062.0434782608695"/>
+<entry key="9" type="xdouble" value="154.91304347826087"/>
+<entry key="10" type="xdouble" value="229.1304347826087"/>
+<entry key="11" type="xdouble" value="44.608695652173914"/>
+<entry key="12" type="xdouble" value="242.56521739130434"/>
+<entry key="13" type="xdouble" value="536.2608695652174"/>
+<entry key="14" type="xdouble" value="174.82608695652175"/>
+<entry key="15" type="xdouble" value="2183.304347826087"/>
+<entry key="16" type="xdouble" value="40.30434782608695"/>
+<entry key="17" type="xdouble" value="215.3913043478261"/>
+<entry key="18" type="xdouble" value="670.1304347826087"/>
+<entry key="19" type="xdouble" value="106.34782608695652"/>
+<entry key="20" type="xdouble" value="50.391304347826086"/>
+<entry key="21" type="xdouble" value="99.6086956521739"/>
+<entry key="22" type="xdouble" value="123.91304347826087"/>
+<entry key="23" type="xdouble" value="337.17391304347825"/>
+<entry key="24" type="xdouble" value="70.73913043478261"/>
+<entry key="25" type="xdouble" value="304.4782608695652"/>
+<entry key="26" type="xdouble" value="3516.695652173913"/>
+<entry key="27" type="xdouble" value="194.34782608695653"/>
+<entry key="28" type="xdouble" value="1061.608695652174"/>
+<entry key="29" type="xdouble" value="356.04347826086956"/>
+<entry key="30" type="xdouble" value="69.1304347826087"/>
+<entry key="31" type="xdouble" value="661.4347826086956"/>
+<entry key="32" type="xdouble" value="558.8695652173913"/>
+<entry key="33" type="xdouble" value="165.6086956521739"/>
+<entry key="34" type="xdouble" value="52.91304347826087"/>
+<entry key="35" type="xdouble" value="127.91304347826087"/>
+<entry key="36" type="xdouble" value="45.34782608695652"/>
+<entry key="37" type="xdouble" value="321.0869565217391"/>
+<entry key="38" type="xdouble" value="34.52173913043478"/>
+<entry key="39" type="xdouble" value="483.2608695652174"/>
+</config>
+<config key="kMeansCluster2">
+<entry key="array-size" type="xint" value="40"/>
+<entry key="0" type="xdouble" value="99.03030303030303"/>
+<entry key="1" type="xdouble" value="460.27272727272725"/>
+<entry key="2" type="xdouble" value="1123.0"/>
+<entry key="3" type="xdouble" value="668.7272727272727"/>
+<entry key="4" type="xdouble" value="82.0909090909091"/>
+<entry key="5" type="xdouble" value="817.1212121212121"/>
+<entry key="6" type="xdouble" value="191.1818181818182"/>
+<entry key="7" type="xdouble" value="761.4545454545455"/>
+<entry key="8" type="xdouble" value="1215.8181818181818"/>
+<entry key="9" type="xdouble" value="154.66666666666666"/>
+<entry key="10" type="xdouble" value="474.24242424242425"/>
+<entry key="11" type="xdouble" value="191.4848484848485"/>
+<entry key="12" type="xdouble" value="174.78787878787878"/>
+<entry key="13" type="xdouble" value="955.3333333333334"/>
+<entry key="14" type="xdouble" value="276.24242424242425"/>
+<entry key="15" type="xdouble" value="931.7272727272727"/>
+<entry key="16" type="xdouble" value="58.21212121212121"/>
+<entry key="17" type="xdouble" value="299.7878787878788"/>
+<entry key="18" type="xdouble" value="188.66666666666666"/>
+<entry key="19" type="xdouble" value="165.78787878787878"/>
+<entry key="20" type="xdouble" value="110.39393939393939"/>
+<entry key="21" type="xdouble" value="143.36363636363637"/>
+<entry key="22" type="xdouble" value="203.75757575757575"/>
+<entry key="23" type="xdouble" value="808.3030303030303"/>
+<entry key="24" type="xdouble" value="120.0"/>
+<entry key="25" type="xdouble" value="573.6363636363636"/>
+<entry key="26" type="xdouble" value="353.8484848484849"/>
+<entry key="27" type="xdouble" value="292.57575757575756"/>
+<entry key="28" type="xdouble" value="380.09090909090907"/>
+<entry key="29" type="xdouble" value="624.5454545454545"/>
+<entry key="30" type="xdouble" value="93.45454545454545"/>
+<entry key="31" type="xdouble" value="1113.6363636363637"/>
+<entry key="32" type="xdouble" value="1562.0"/>
+<entry key="33" type="xdouble" value="384.3939393939394"/>
+<entry key="34" type="xdouble" value="104.39393939393939"/>
+<entry key="35" type="xdouble" value="283.75757575757575"/>
+<entry key="36" type="xdouble" value="116.0"/>
+<entry key="37" type="xdouble" value="1018.3333333333334"/>
+<entry key="38" type="xdouble" value="182.06060606060606"/>
+<entry key="39" type="xdouble" value="917.6060606060606"/>
+</config>
+<config key="FeatureNames">
+<entry key="array-size" type="xint" value="41"/>
+<entry key="0" type="xstring" value="D49950"/>
+<entry key="1" type="xstring" value="D63880"/>
+<entry key="2" type="xstring" value="J03473"/>
+<entry key="3" type="xstring" value="J05243"/>
+<entry key="4" type="xstring" value="L13278"/>
+<entry key="5" type="xstring" value="L47738"/>
+<entry key="6" type="xstring" value="M21551_rna1"/>
+<entry key="7" type="xstring" value="M55150"/>
+<entry key="8" type="xstring" value="M62762"/>
+<entry key="9" type="xstring" value="M81933"/>
+<entry key="10" type="xstring" value="M91432"/>
+<entry key="11" type="xstring" value="S50223"/>
+<entry key="12" type="xstring" value="U12471_cds1"/>
+<entry key="13" type="xstring" value="U32944"/>
+<entry key="14" type="xstring" value="U35451"/>
+<entry key="15" type="xstring" value="U50136_rna1"/>
+<entry key="16" type="xstring" value="U53468"/>
+<entry key="17" type="xstring" value="U72342"/>
+<entry key="18" type="xstring" value="U82759"/>
+<entry key="19" type="xstring" value="X15949"/>
+<entry key="20" type="xstring" value="X52142"/>
+<entry key="21" type="xstring" value="X56411_rna1"/>
+<entry key="22" type="xstring" value="X63469"/>
+<entry key="23" type="xstring" value="X74262"/>
+<entry key="24" type="xstring" value="X76061"/>
+<entry key="25" type="xstring" value="X76648"/>
+<entry key="26" type="xstring" value="X95735"/>
+<entry key="27" type="xstring" value="Y08612"/>
+<entry key="28" type="xstring" value="Y12670"/>
+<entry key="29" type="xstring" value="D38073"/>
+<entry key="30" type="xstring" value="AF012024_s"/>
+<entry key="31" type="xstring" value="D26156_s"/>
+<entry key="32" type="xstring" value="M84371_rna1_s"/>
+<entry key="33" type="xstring" value="M31211_s"/>
+<entry key="34" type="xstring" value="U09087_s"/>
+<entry key="35" type="xstring" value="U26266_s"/>
+<entry key="36" type="xstring" value="L49229_f"/>
+<entry key="37" type="xstring" value="M31523"/>
+<entry key="38" type="xstring" value="M28170"/>
+<entry key="39" type="xstring" value="U29175"/>
+<entry key="40" type="xstring" isnull="true" value=""/>
+</config>
+<config key="HiLiteMapping">
+<config key="cluster_2">
+<entry key="cluster_2" type="xstring" value="cluster_2"/>
+<config key="CFG_MAPPED_KEYS">
+<entry key="array-size" type="xint" value="33"/>
+<entry key="0" type="xstring" value="Row9"/>
+<entry key="1" type="xstring" value="Row7"/>
+<entry key="2" type="xstring" value="Row6"/>
+<entry key="3" type="xstring" value="Row5"/>
+<entry key="4" type="xstring" value="Row3"/>
+<entry key="5" type="xstring" value="Row1"/>
+<entry key="6" type="xstring" value="Row58"/>
+<entry key="7" type="xstring" value="Row59"/>
+<entry key="8" type="xstring" value="Row34"/>
+<entry key="9" type="xstring" value="Row54"/>
+<entry key="10" type="xstring" value="Row55"/>
+<entry key="11" type="xstring" value="Row38"/>
+<entry key="12" type="xstring" value="Row13"/>
+<entry key="13" type="xstring" value="Row10"/>
+<entry key="14" type="xstring" value="Row11"/>
+<entry key="15" type="xstring" value="Row71"/>
+<entry key="16" type="xstring" value="Row70"/>
+<entry key="17" type="xstring" value="Row17"/>
+<entry key="18" type="xstring" value="Row18"/>
+<entry key="19" type="xstring" value="Row39"/>
+<entry key="20" type="xstring" value="Row44"/>
+<entry key="21" type="xstring" value="Row45"/>
+<entry key="22" type="xstring" value="Row42"/>
+<entry key="23" type="xstring" value="Row69"/>
+<entry key="24" type="xstring" value="Row48"/>
+<entry key="25" type="xstring" value="Row46"/>
+<entry key="26" type="xstring" value="Row65"/>
+<entry key="27" type="xstring" value="Row26"/>
+<entry key="28" type="xstring" value="Row24"/>
+<entry key="29" type="xstring" value="Row40"/>
+<entry key="30" type="xstring" value="Row22"/>
+<entry key="31" type="xstring" value="Row41"/>
+<entry key="32" type="xstring" value="Row21"/>
+</config>
+</config>
+<config key="cluster_1">
+<entry key="cluster_1" type="xstring" value="cluster_1"/>
+<config key="CFG_MAPPED_KEYS">
+<entry key="array-size" type="xint" value="23"/>
+<entry key="0" type="xstring" value="Row29"/>
+<entry key="1" type="xstring" value="Row28"/>
+<entry key="2" type="xstring" value="Row57"/>
+<entry key="3" type="xstring" value="Row31"/>
+<entry key="4" type="xstring" value="Row32"/>
+<entry key="5" type="xstring" value="Row33"/>
+<entry key="6" type="xstring" value="Row66"/>
+<entry key="7" type="xstring" value="Row53"/>
+<entry key="8" type="xstring" value="Row35"/>
+<entry key="9" type="xstring" value="Row36"/>
+<entry key="10" type="xstring" value="Row49"/>
+<entry key="11" type="xstring" value="Row64"/>
+<entry key="12" type="xstring" value="Row37"/>
+<entry key="13" type="xstring" value="Row56"/>
+<entry key="14" type="xstring" value="Row62"/>
+<entry key="15" type="xstring" value="Row27"/>
+<entry key="16" type="xstring" value="Row63"/>
+<entry key="17" type="xstring" value="Row50"/>
+<entry key="18" type="xstring" value="Row60"/>
+<entry key="19" type="xstring" value="Row51"/>
+<entry key="20" type="xstring" value="Row61"/>
+<entry key="21" type="xstring" value="Row52"/>
+<entry key="22" type="xstring" value="Row30"/>
+</config>
+</config>
+<config key="cluster_0">
+<entry key="cluster_0" type="xstring" value="cluster_0"/>
+<config key="CFG_MAPPED_KEYS">
+<entry key="array-size" type="xint" value="16"/>
+<entry key="0" type="xstring" value="Row8"/>
+<entry key="1" type="xstring" value="Row19"/>
+<entry key="2" type="xstring" value="Row4"/>
+<entry key="3" type="xstring" value="Row2"/>
+<entry key="4" type="xstring" value="Row0"/>
+<entry key="5" type="xstring" value="Row68"/>
+<entry key="6" type="xstring" value="Row43"/>
+<entry key="7" type="xstring" value="Row67"/>
+<entry key="8" type="xstring" value="Row47"/>
+<entry key="9" type="xstring" value="Row14"/>
+<entry key="10" type="xstring" value="Row16"/>
+<entry key="11" type="xstring" value="Row25"/>
+<entry key="12" type="xstring" value="Row15"/>
+<entry key="13" type="xstring" value="Row23"/>
+<entry key="14" type="xstring" value="Row12"/>
+<entry key="15" type="xstring" value="Row20"/>
+</config>
+</config>
+</config>
+</config>

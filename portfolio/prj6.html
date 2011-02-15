@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+<title>Mining National Crime Data</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print" />
+<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" /> 
+<!--[if IE]>
+  <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+</head>
+<body>
+<div class="container">
+  <h1>Finding a correlation between Crime and Income</h1>
+  
+  <h2><u><b>Dataset</b></u></h2>
+The dataset chosen involved crime data from all 50 states and the District of columbia. The dataset from the crime was gained in the from of a Comma Seperated File (CSV) posted by infochimps.org. The data on the average income by state was posted by infoplease.com
+ <br><a href="http://infochimps.org/datasets/crime-rates-by-state-2004-and-2005-and-by-type-2005-cleaned-up-v--2">Crime Data</a>
+ <br><a href="http://www.infoplease.com/ipa/A0104652.html">Income Data</a>
+
+  <h2><u><b>Toolset Used</b></u></h2>
+The toolset that was used was KNIME which can be downloaded <a href="http://www.knime.org/download">here</a>. The layout node structure looked like the following.
+<img src="nodes.gif">
+
+Some Python code was used to make the state income information more readable. That is below 
+<pre class="code">
+inFile = open('income', 'r')
+outFile = open('newOutput', 'w')
+
+for line in inFile:
+	temp = line.split("\t")
+	newOut = temp[0] + " ," + temp[7].strip("$") + "," + temp[8].strip("$")+"\n"
+	newTemp = temp[0] + " ,"
+	for c in temp[7]:
+		if c != '$' and c != ',':
+			newTemp += c
+
+	newTemp += ","
+	for c in temp[8]:
+		if c != '$' and c != ',':
+			newTemp += c
+	newTemp += "\n"	
+	outFile.write(newTemp)
+	
+
+
+</pre>
+
+
+  <h2><u><b>Dataset Documentation</b></u></h2>
+The documentation for both of the datasets is very clear. With the income data everything is clearly stated. The data provided by infochimps was also extremely clear. The folder available to download included a README & a YAML file that included everything needed including where the information was collected from. 
+
+
+  <h2><u><b>Project Goal</b></u></h2>
+The goal of this project was to see if there was a link between income and crime. 
+
+  <h2><u><b>Data Exploration</b></u></h2>
+The initial summary statistics show the range and average crime for the country. All figures are the amount of crimes per 100,000 people. 
+<br>Violent Crimes: Murder, Rape, Aggravated Assault
+<br>Property Crimes: Larceny-Theft, Burglary, Motor Vehicle Theft
+<table>
+	<tr><td><b>Violent Crimes:</b></td>             <td><b>Property Crimes:</b></td> </tr>
+	<tr><td><b>Min:</b>     98.2</td>                    <td><b>Min:</b>     1776.4</td> </tr>
+	<tr><td><b>Max:</b>     1459</td>                    <td><b>Max:</b>     4893</td> </tr>
+	<tr><td><b>Mean:</b>    422.3431</td>                <td><b>Mean:</b>    3377.1902</td> </tr>
+</table>
+The following is the correlation matrix for all the crimes:
+<img src= "correlation.png">
+
+  <h2><u><b>Snapshot</b></u></h2>
+The following is a snapshot of the linear regression as well as the scatterplot when comparing just murder to income.
+<br><b>Scatterplot: </b> <br>
+<img src="murder-Income.png">
+<br><br>
+<b>Regression: </b><br>
+<img src="LinReg.png">
+
+  <h2><u><b>Difficulties</b></u></h2>
+The main difficulties were formatting the data and getting it into KNIME, and learning KNIME in general. The data formatting was fairly straightforward using a simple python script and formatting the data in OpenOffice. Learning KNIME was fun and fairly easy to get. After that the project was fairly straight forward with getting the usefull information out.
+
+  <h2><u><b>Conclusion</b></u></h2>
+Overall this project was very fun and a good way to learn the toolkit. KNIME was a very good toolkit and I will most likely use it in the future. It is fairly easy and is very good to pick it up and start working.
+The future work would include trying to see if there is a corelation between other population things such as race or gender. Trying to correlate between weather, such as average rainfall in a state, and crime.
+
+</div>
+</body>
+</html>
+

@@ -1,0 +1,91 @@
+Author: Chris Navrides
+
+This program is like a mini google. It will crawl a certain website and view all of it's pages and links. It will store that in a database used for querying. 
+
+searchengine.py: This is the search engine builder. It as a crawler class that goes through the webpages and links them. It then also has a searcher class that allows you to search through the pages
+
+   CLASS- crawler: This class is used to crawl through a website and download all of the links on it's webpage
+   	* getentryid(self,table,field,value,createnew): This function will get an entry id and add it if it isn't already there
+	
+	* addtoindex(self,url,soup): This function will take a webpage(url), index it and save it.
+	
+	* gettextonly(self,soup): This will get the text out from an HTML page(soup)
+	
+	* separatewords(self,text): will seperate the words(text) by any non white space
+	
+	* addlinkref(self,urlFrom,urlTo,linkText): This will add a link between 2 pages. The urlFrom is the page the link is on. urlTO is the page that is referenced. linkText is the text that the link is quoted as
+	
+	* crawl(self, pages, depth): This is what does the actual crawling. It takes a list of webpages (pages) and will then get all of the links on them. It does this using a DFS search to the passed in depth. The default is set to a depth of 2.
+	
+	* createindextables(self): This will create all the database tables needed.
+	
+	* calculatepagerank(self, iterations): This will calculate the page rank of the known webpages. The default number of iterations is set to 20.
+
+
+   CLASS- searcher: This is used to search through the results of the crawler.
+   	* getmatchrows(self,q): This function takes in a string of word(s) and breaks it into individual words. It then adds the url to each of the tables per word. After doing this for a webpage every word on that webpage will have a database table for it and the url will be in that table. 
+	
+	* getscoredlist(self,rows,wordids): This will score the words based upon how important the word is. Since some words are more important to returning better results
+	
+	* returnurlname(self,id): This will take in an id and return what the url is.
+	
+	* query(self,q): Ths function will take a query (q) and search the database for it
+	
+	* normalizescores(self, scores, smallIsBetter): This will take a dictionary of ID's and scores and return a dictionary with the same ID's but a normalized score (between 0 & 1)
+	
+	* frequencyscore(self, rows): This creates a dictioanry with an entry for every URL ID and counts how many times each item appears. It then normalizes the score and returns it
+
+	* locationscore(self, rows):  This is just a metric to tell how relevant a query is. If it is higher in the page chances are it's more relevant.
+	
+	* distancescore(self, rows): Distance metric to tell if two words are close (i.e. next to eachother) 
+	
+	* inboundlinkscore(self, rows): This counts how many other pages link to this page
+	
+	* linktextscore(self, rows, wordids): This is a metric based upon the types of links on the current page
+	
+	* pagerankscore(self, rows): This will return the page rank for the pages 
+	
+	* nnscore(self, rows, wordids): 
+	
+
+
+nn.py: This is the Neural Network 
+   CLASS- searchnet:
+	* maketables(self): This function makes a table for the hiddennodes, hiddenwords and hudden url.
+	
+	* getstrength(self, formid, toid, layer): Will return the strength of the connection at specified layer.
+	
+	* setstrength(self, fromid, toid, layer, strength): This will make a connection between fromid and toid at the specidied layer. If strength exsists it will update it to specified strength or set it if not already there.
+	
+	* generatehiddennode(self, wordids, urls): This will generate the "hidden nodes" which are just nodes that are placed between 2 words. This will generate the hidden nodes when one does not exsist already.
+	
+	* generatehiddennode(self, wordids, urls): This will query the database and retrieve all of the hidden nodes assocaited with wordids and urlids
+	
+	* getallhiddenids(self, wordids, urlids): This will query the database and set up a dictionary of values all set to 1 for the relevant data
+	
+	* setupnetwork(self, wordids, urlids): This will setup the local variables with all of the information that is stored in the databases.
+	
+	* feedforwars(self): This function must fun before running back propogation. It will take the current set of input and run it through the current system with the current weights and store them in local variables.
+	
+	* getresults(self, wordids, urlids): This just returns the results from feedforward 
+	
+	* backPropogate(self, targets, N): This function takes in a set of targets and has an optional value of the learning rate N (default is set to 0.5) This function will take the targets, which is what it each node should be and do the following steps (from the book): 
+		For each node in the output layer:
+		1. Calculate the difference between the node.s current output and what it should
+		be.
+		2. Use the dtanh function to determine how much the node.s total input has to
+		change.
+		3. Change the strength of every incoming link in proportion to the link.s current
+		strength and the learning rate.
+		For each node in the hidden layer:
+		1. Change the output of the node by the sum of the strength of each output link
+		multiplied by how much its target node has to change.
+		2. Use the dtanh function to determine how much the node.s total input has to
+		change.
+		3. Change the strength of every input link in proportion to the link.s current
+		strength and the learning rate.
+	
+	
+	* trainquery(self, wordids, urlids, selectedurl): This takes the list of worfids and urlids and generates hidden nodes using the above function. It then sets up a network between the wordids and the urlids. It then uns feedforwards, sets up the targetvalues and runs backPropogate. It finishes by updating the database
+	
+	* updatedatabase(self): This function just takes the values from the the wordlist and hidden nodes and stores them in the database for future use.

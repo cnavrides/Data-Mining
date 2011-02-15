@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://www.knime.org/2008/09/XMLConfig" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.knime.org/2008/09/XMLConfig http://www.knime.org/XMLConfig_2008_09.xsd" key="settings.xml">
+<entry key="name" type="xstring" value="k-Means"/>
+<config key="model">
+<config key="nrClusters_Internals">
+<entry key="SettingsModelID" type="xstring" value="SMID_integer"/>
+<entry key="EnabledStatus" type="xboolean" value="true"/>
+</config>
+<entry key="nrClusters" type="xint" value="3"/>
+<config key="maxNrIterations_Internals">
+<entry key="SettingsModelID" type="xstring" value="SMID_integer"/>
+<entry key="EnabledStatus" type="xboolean" value="true"/>
+</config>
+<entry key="maxNrIterations" type="xint" value="99"/>
+<config key="cfgColmns_Internals">
+<entry key="SettingsModelID" type="xstring" value="SMID_filterString"/>
+<entry key="EnabledStatus" type="xboolean" value="true"/>
+</config>
+<config key="cfgColmns">
+<config key="InclList">
+<entry key="array-size" type="xint" value="40"/>
+<entry key="0" type="xstring" value="D49950"/>
+<entry key="1" type="xstring" value="D63880"/>
+<entry key="2" type="xstring" value="J03473"/>
+<entry key="3" type="xstring" value="J05243"/>
+<entry key="4" type="xstring" value="L13278"/>
+<entry key="5" type="xstring" value="L47738"/>
+<entry key="6" type="xstring" value="M21551_rna1"/>
+<entry key="7" type="xstring" value="M55150"/>
+<entry key="8" type="xstring" value="M62762"/>
+<entry key="9" type="xstring" value="M81933"/>
+<entry key="10" type="xstring" value="M91432"/>
+<entry key="11" type="xstring" value="S50223"/>
+<entry key="12" type="xstring" value="U12471_cds1"/>
+<entry key="13" type="xstring" value="U32944"/>
+<entry key="14" type="xstring" value="U35451"/>
+<entry key="15" type="xstring" value="U50136_rna1"/>
+<entry key="16" type="xstring" value="U53468"/>
+<entry key="17" type="xstring" value="U72342"/>
+<entry key="18" type="xstring" value="U82759"/>
+<entry key="19" type="xstring" value="X15949"/>
+<entry key="20" type="xstring" value="X52142"/>
+<entry key="21" type="xstring" value="X56411_rna1"/>
+<entry key="22" type="xstring" value="X63469"/>
+<entry key="23" type="xstring" value="X74262"/>
+<entry key="24" type="xstring" value="X76061"/>
+<entry key="25" type="xstring" value="X76648"/>
+<entry key="26" type="xstring" value="X95735"/>
+<entry key="27" type="xstring" value="Y08612"/>
+<entry key="28" type="xstring" value="Y12670"/>
+<entry key="29" type="xstring" value="D38073"/>
+<entry key="30" type="xstring" value="AF012024_s"/>
+<entry key="31" type="xstring" value="D26156_s"/>
+<entry key="32" type="xstring" value="M84371_rna1_s"/>
+<entry key="33" type="xstring" value="M31211_s"/>
+<entry key="34" type="xstring" value="U09087_s"/>
+<entry key="35" type="xstring" value="U26266_s"/>
+<entry key="36" type="xstring" value="L49229_f"/>
+<entry key="37" type="xstring" value="M31523"/>
+<entry key="38" type="xstring" value="M28170"/>
+<entry key="39" type="xstring" value="U29175"/>
+</config>
+<config key="ExclList">
+<entry key="array-size" type="xint" value="1"/>
+<entry key="0" type="xstring" value="CLASS"/>
+</config>
+<entry key="keep_all_columns_selected" type="xboolean" value="false"/>
+</config>
+</config>
+<entry key="hasContent" type="xboolean" value="true"/>
+<config key="ports">
+<config key="port_1">
+<entry key="index" type="xint" value="1"/>
+<entry key="port_spec_class" type="xstring" value="org.knime.core.data.DataTableSpec"/>
+<entry key="port_object_class" type="xstring" value="org.knime.core.node.BufferedDataTable"/>
+<entry key="port_object_summary" type="xstring" value="Rows: 72, Cols: 42"/>
+<entry key="port_dir_location" type="xstring" value="port_1"/>
+</config>
+<config key="port_2">
+<entry key="index" type="xint" value="2"/>
+<entry key="port_spec_class" type="xstring" value="org.knime.core.node.port.pmml.PMMLPortObjectSpec"/>
+<entry key="port_object_class" type="xstring" value="org.knime.base.node.mine.cluster.PMMLClusterPortObject"/>
+<entry key="port_object_summary" type="xstring" value="ClusteringModel with 3 cluster: cluster_0, cluster_1, cluster_2"/>
+<entry key="port_spec_location" type="xstring" value="spec/spec.zip"/>
+<entry key="port_object_location" type="xstring" value="object/portobject.zip"/>
+<entry key="port_dir_location" type="xstring" value="port_2"/>
+</config>
+</config>
+</config>

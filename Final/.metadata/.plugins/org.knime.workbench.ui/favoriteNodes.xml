@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<favoritenodes>
+<personals/>
+<frequents>
+<favorite frequency="2" nodeid="org.knime.base.node.io.csvreader.CSVReaderNodeFactory"/>
+<favorite frequency="2" nodeid="org.knime.base.node.io.filereader.FileReaderNodeFactory"/>
+<favorite frequency="1" nodeid="org.knime.base.node.viz.table.TableNodeFactory"/>
+<favorite frequency="1" nodeid="org.knime.base.node.mine.cluster.kmeans.ClusterNodeFactory"/>
+<favorite frequency="1" nodeid="org.knime.base.node.mine.cluster.hierarchical.HierarchicalClusterNodeFactory"/>
+<favorite frequency="1" nodeid="org.knime.base.node.viz.property.color.ColorManager2NodeFactory"/>
+<favorite frequency="1" nodeid="org.knime.base.node.viz.statistics.Statistics2NodeFactory"/>
+<favorite frequency="1" nodeid="org.knime.base.node.preproc.correlation.pmcc.PMCCFilterNodeFactory"/>
+<favorite frequency="1" nodeid="org.knime.base.node.mine.decisiontree2.learner.DecisionTreeLearnerNodeFactory"/>
+<favorite frequency="1" nodeid="org.knime.base.node.preproc.correlation.pmcc.PMCCNodeFactory"/>
+</frequents>
+<lastused>
+<favorite nodeid="org.knime.base.node.preproc.correlation.pmcc.PMCCNodeFactory"/>
+<favorite nodeid="org.knime.base.node.io.csvreader.CSVReaderNodeFactory"/>
+<favorite nodeid="org.knime.base.node.viz.table.TableNodeFactory"/>
+<favorite nodeid="org.knime.base.node.mine.cluster.kmeans.ClusterNodeFactory"/>
+<favorite nodeid="org.knime.base.node.mine.cluster.hierarchical.HierarchicalClusterNodeFactory"/>
+<favorite nodeid="org.knime.base.node.io.filereader.FileReaderNodeFactory"/>
+<favorite nodeid="org.knime.base.node.viz.property.color.ColorManager2NodeFactory"/>
+<favorite nodeid="org.knime.base.node.viz.statistics.Statistics2NodeFactory"/>
+<favorite nodeid="org.knime.base.node.preproc.correlation.pmcc.PMCCFilterNodeFactory"/>
+<favorite nodeid="org.knime.base.node.mine.decisiontree2.learner.DecisionTreeLearnerNodeFactory"/>
+</lastused>
+</favoritenodes>

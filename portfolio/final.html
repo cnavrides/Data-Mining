@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+<title>Final Project</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print" />
+<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" /> 
+<!--[if IE]>
+  <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+</head>
+<body>
+<div class="container">
+  <h1>Final Project</h1>
+All project files including the original data is located at <a href="http://mines.humanoriented.com/classes/2010/fall/csci568/project/final_project.html">http://mines.humanoriented.com/classes/2010/fall/csci568/project/final_project.html</a>
+  <h2><b>About the project<b></h2>
+This project's goals are to show what was learned in datamining throughout the semester. The data set given had very little context and was very open ended. The premise was to find any patterns, anomolies, groups, or other patterns. Other goals were to discuss the quality of the data that was found, to fix any missing data. <br>
+The data is on skiing data. Each row of the data represents one person. The information for that person (each column) is:<br>
+Integer values for: Rating, Survey, Prize, Punishment. <br>
+Binary Data for: Aspen, Snowmass, Breckenridge, Keystone, ABasin, Loveland, CrestedButte, Vail, Silverton, WinterPark, Mary Jane, Eldora
+
+<br><br><br><br>  <h2><b>Pre-Processing</b></h2>
+Before working on the data pre-processing was done to it. This was extremely useful because it helped to eliminate anomolies. It also helped show which pieces of data were irrelevant. It also gave a base case for the number of clusters that there were.
+<br><br>
+The following code is what was used. This code read in the file that was provided and counted how many times each line was present. <br> 
+  <pre class="code">
+#!/usr/bin/python
+
+#dictionary which will hold the line as a key and the count as the value
+count = {}
+
+#Open the orignial csv provided
+fileIn = open('final_ORIGINAL.csv', 'r')
+#skip the first line
+fileIn.readline()
+
+#go through each line and give it a key value pair
+for line in fileIn:
+	if line[0:len(line)-1] in count:
+		count[line[0:len(line)-1]] = count[line[0:len(line)-1]]+1
+	else:
+		count[line[0:len(line)-1]] = 1
+#close the in file
+fileIn.close()
+
+#open the outfile
+fileOut = open('Anomoly_Output.csv', 'w')
+
+for keyVal in count.keys():
+	fileOut.write(str(keyVal) + ";   -- COUNT --> " + str(count[keyVal]) + "\n")
+
+fileOut.close()
+ </pre> 
+ <br>
+ <h3>Anomolies</h3>
+ From this it was found that every line appeared 42-43 times each in the file except for one line which appeared only 3. These 3 were then taken out as anomolies. After taking out the anomolies 23 distanct clusters were then easily recognizable.
+
+<br><br><br> <h3>Dealing with missing Values</h3>
+After taking out the anomolies the newOutput file was then sorted. This file is located <a href="final/Anomoly_Output_sorted.csv">here</a>.
+<br>From sorting and looking at the missing values, the question marks in silverton were most likely 0's because the closest value to that one had a 0 for it. The Q value in Crested Butte was also changed to a 0. This is because if it was a 1 it would then have the same value everywhere as a group who has a ranking of .9 and the rows with the Q have a ranking of .8. If it were to be replaced with a 1 then it would mean there is an error in one of the ranking columns as well. The -1 was replaced with a 1 because all of the other rows, except for one, with a ranking of .95 also had a 1.<br>
+
+<br><br><br> <h3>Groups/ Clusters</h3>
+From the summary/preprocessing file it was found that there are 23 distinct groups/ clusters. An image of the output file is found below and shows what each cluster looks like:<br>
+<img src="Final/groups.png">
+
+
+<br><br><br> <h3>Summary Statistics</h3>
+ After identifying the 3 anomolies, I went back to the original dataset and removed them from the file. I also replaced the missing values with a valid input. I then took summery statistics which are presented in a snapshot image below:
+ <img src="final/summary.png">
+ 
+ <br><br><br><br> <h2><b>Mining it with KNIME<b></h2>
+		 After preprocessing the data, I decided to put it into Knime to see if I could verify/ get more useful information. The final knime workflow ended up looking like the following: 
+<br><br><img src="final/knime.png">
+
+<br><br><br> <h3>Correlation</h3>
+One of the first things done in knime was to look at a correlation matrix. This matrix works well at showing how different things are correlated. The following image is the correlation image generated in KNIME:<br>
+<img src="Final/correlation.png"><br>
+This correlation matrix showed that Keystone and Breckenridge had a nearly perfect correlation. Going back to the summary of the data, which shows just each line and how many times it appeared, it shows that every group except for one has a 1 for both Keystone and Breckenridge. The one group that doesn't have a 1 for both has a 0 for both. There is also a very high correlation between Silverton and Vail though when looking at the data it is used to distinguish two seperate groups so it was left in. 
+
+<br><br><br> <h3>K-Means Clustering</h3>
+The next task that I embarked on was to see if any of the clustering algorithms would also find that there are 23 clusters. I first started using <a href="clustering.html">K-means Clustering</a> with a 23 clusters and 100 iterations. I ran this a couple of times and all it found was one cluster of 943 and another cluster of 43. Upon examining it, it clustered all of the points in the group that only has a ranking of .15 together then all the other points. A picture of this outcome is shown below:<br>
+<img src="Final/k-means1.png"><br>
+Based on the hint in class that there were less than 30 clusters I tried clusters of every size on the data between 2 and 30. Unfortunately all the times that I tried to do this yielded the same results. I tried this earlier when first exploring the data in the alamode lab and found that 16 gave a fairly decent distribution with only having 2 clusters empty. 
+
+<br><br><br> <h3>Hierarchical Clustering</h3>
+After the failed attempt at K-means I decided to try <a href="clustering.html">Hierarchical Clustering</a>. This yielded some rather interesting results. This found that there were 3 different clusters. The clusters were 1 for the values with rating of ".15" one for the values with rating of ".58" and one for everything else. The dendrogram is shown below:
+<img src="Final/hierarchical.png" width="550" height="550"><br>
+Overall the Hierarchical Clustering, just like the K-means was pretty much useless. 
+
+
+<br><br><br><br><h2>Conclusion</h2>
+Overall I feel that KNIME was somewhat of a let down. Though it did find that two of the columns of data, that from Breckenridge and Keystone, were so strongly correlated it could be excluded, it was virtually useless in finding clusters. After trying with just a few KNIME tools it was clear mixing binary data (which needs something like a <a href="similarity.html">Jacard or Tanimoto</a> metric) and other non binary attributes it would cause KNIME to give horrible results. Ultimately the best tools to help mine the data was the one the python script I made and was only 23 lines. <br>
+The best way that was found was the python script that I wrote which showed all of the lines and their count. That made a clear distinction between groups, show the anomoly, help identify how to replace missing data and make summary statistics extremely easy. Overall if you have the time to write a program/script it seems like it is a better idea to do that. This is because you will know better what you want/ what to look for and can get better results.  
+
+<br><br><h3>Interesting</h3>
+There were a couple of things that were very interesting. The first was how corelated some of the ski-resorts were. I am not a huge skier/ snowboarder so it is interesting to see how most people go to a few core skie areas (assuming a 1 means they go to that skie resort). It was also interesting the lack of variety in the data, having only 23 distinct groups of data, though that was most likely due to pre-pruning by the professor.
+
+<br><br><h3>Answering the pointy haired bosses questions</h3>
+<ul>
+	<li><b><i>How might you describe the data? (summary stats of attributes, sets of attributes, correlations) Be as thorough as possible.</b></i>
+	<br>
+		Overall the data only has 24 different types of people. One group is an anomoly and should be removed from the data. It appears from looking at the data that the more ski-resorts a person likes (has a 1 for it) the higher their rating is. The surver prize and punishment were about the same for each group. The stats and list of the attributes are listed above.
+		<br><br>
+
+	<li><i><b>Can you transform the data to simplify your mining approach?</b></i>
+	<br>
+		Yes, you can eliminate three anomoly columns. You can also eliminate two columns, Keystone and Breckenridge because they are the same for all data except one entry. You could also simplify it down to 23 data entries because there are only 23 data types and they are all within one of how many times they are in the dataset.
+		<br><br>
+
+	<li><i><b>Are there problems with the data quality? If so, what problems? How will you handle them?</b></i>
+	<br>
+Yes, there are problems such as two groups of people have the exact same values on every attribute except for their ratings. This would imply there are other variables used to determine their rating that are not listed, or that the rating is subjective and there were multiple people collecting this data. 
+<br><br>
+
+	<li><i><b>Are there anomalies in the data? If so, can you identify them?</b></i>
+	<br>
+		Yes, there are three data entries in the 900+ entries that are nothing like any of the other entries. These were identified in pre-processing using a python script to count the number of times each line occured.
+		<br><br>
+		
+	<li><i><b>Are there distinguished groups of data objects? If so, what characterizes these groups best?</b></i>
+	<br>
+There are distinguished groups. The groups are based upon their varying ratings. That is the first and most evident group. You can break it down further in that each of the ratings members all have different binary values for their ski-resorts, survey, prize and punishment values. It appears that the more 1's you have for the varying ski-resorts the higher your rating is. 
+<br><br>
+
+	<li><i><b>Are there associations across the ski resorts selected? If so, what are they?</b></i>
+	<br>
+		Yes, there is a perfect correlation between Breckenridge and Keystone. There is also a very high correlation between Silverton and Vail.
+		<br><br>
+	
+</ul>
+
+<br><br><h3>Future Work</h3>
+In the future to extract more useful information, getting more data would be helpful. Having data extra information on the people would greatly help in the process of trying to find useful patterns and clusters. Implementing more of the algorithms on my own instead of relying on a toolkit which appears to be broken would also be very good for future work.
+</div>
+</body>
+</html>
+
